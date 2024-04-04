@@ -1,17 +1,27 @@
 * {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
-body {
-  height: 100vh;
+#input-latex,
+#output-latex {
+  width: 200px;
+  height: 20px;
+  font-size: 16px;
+}
+
+#output-latex {
+  border: 2px solid red;
+  border-radius: 30px;
+  justify-content: center;
+  width: 500px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  font-size: 30px;
 }
 
-.title {
-  margin-bottom: 40px;
+.d-none {
+  display: none !important;
 }
