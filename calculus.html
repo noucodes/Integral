@@ -78,7 +78,7 @@
     <!-- Contact-->
     <section id="indexhero" class="d-flex align-items-center">
       <div class="container">
-        <div class="row gx-4 gx-lg-6">
+        <div class="row gx-4 gx-lg-6 g-3">
           <div class="col-lg-6 col-xl-6 text-center">
             <h2 class="mt-0">Integrate Here</h2>
             <button type="button" class="btn btn-sm btn-primary">
@@ -103,7 +103,9 @@
               ><div id="results"></div
             ></i>
           </div>
-          <div id="plot-container" class="col-lg-6"><div id="plot"></div></div>
+          <div id="plot-container" class="col-lg-6">
+            <div id="ansplot"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -156,24 +158,28 @@
       $("#submitButton").click(function () {
         var formula = mathField.text();
         console.log(formula);
-        // var l = nerdamer.convertFromLaTeX("\int\frac{1}{x}")
-        // console.log(l.toString());
+        var l = nerdamer.convertFromLaTeX(
+          "\mathrm{log}\left(\mathrm{sec}\left(x\right)\right)"
+        );
+        console.log(l.toString());
+
         var e = nerdamer.integrate(formula);
         var html = katex.renderToString(e.latex(), {
           throwOnError: false,
         });
+        var ans = e.text();
         $("#results").html(html);
+        console.log(ans);
         functionPlot({
-          target: "#plot",
-          width: 580,
+          target: "#ansplot",
+          width: 600,
           height: 400,
           data: [
             {
-              fn: formula,
+              fn: ans,
             },
           ],
         });
-        console.log(html);
       });
     </script>
   </body>
